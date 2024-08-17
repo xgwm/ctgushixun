@@ -205,6 +205,7 @@ export default {
               "http://localhost:8080/users/login",
               this.formModel
             );
+            window.sessionStorage.setItem('token', res.data.token);
             if (res.data.code === 0) {
               Message.success("登录成功！");
               this.reset();
