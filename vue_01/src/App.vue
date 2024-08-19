@@ -1,32 +1,46 @@
 <template>
   <div id="app">
-    <nav>
-      <!-- <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> -->
-    </nav>
-    <router-view />
+
+
+
+    <el-container>
+      <el-header height="150px">
+        <Header></Header>
+      </el-header>
+      <el-container>
+        <el-aside width="300px">
+          <Aside></Aside>
+        </el-aside>
+        <el-main><router-view></router-view></el-main>
+      </el-container>
+    </el-container>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+
+import Header from './views/Header_content.vue';
+import Aside from './views/Nav_menu.vue';
+
+export default {
+  name: 'App',
+  data() {
+    return {
+      msg: 'hello world',
+      num: 1
+    }
+  },
+  methods: {
+    handleChange(value) {
+      console.log(value);
+    }
+  },
+  // 注册组件，名字按规范自己取
+  components: {
+    // mytable,
+    Aside,
+    Header
+  }
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>

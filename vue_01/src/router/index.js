@@ -1,34 +1,57 @@
-import Vue from 'vue'
+
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import Login from '../views/Login.vue'
-import axios from 'axios'
-import Index from '../views/Index.vue'
+
 import { Message } from 'element-ui'
-Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/login',
-    name: 'Login',
-    component: Login,
+    name: 'login',
+    component: () => import('../views/Main_login.vue')
   },
+  //主页路由
   {
     path: '/index',
-    name: 'Index',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: function () {
-      return import(/* webpackChunkName: "about" */ '../views/Index.vue')
-    },
+    name: 'index',
+    component: () => import('../views/Main_content.vue')
   },
   {
     path: '/',
-    name: 'Home',
-    redirect: '/index',
+    name: 'home',
+    redirect: '/index'
+  },
+  //订单路由
+  {
+    path:'/order',
+    name:'order',
+    component:()=>import('../components/table_order.vue')
+  },
+  //运单路由
+  {
+    path:'/transport',
+    name:'transport',
+    component:()=>import('../components/table_transport.vue')
+  },
+  //货物路由
+  {
+    path:'/cargo',
+    name:'cargo',
+    component:()=>import('../components/table_cargo.vue')
+  },
+  //工资路由
+  {
+    path:'/salary',
+    name:'salary',
+    component:()=>import('../components/table_salary.vue')
+  },
+  //个人中心路由
+  {
+    path:'/user',
+    name:'user',
+    component:()=>import('../views/views_user.vue')
   },
 ]
+
 
 const router = new VueRouter({
   mode: 'history',
